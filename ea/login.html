@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EA ログイン</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1 class="h1">EA メンバーログイン</h1>
+      <p class="muted">IDとパスワードを入力してください。</p>
+
+      <div class="stack">
+        <input id="loginId" type="text" placeholder="ログインID" class="input" />
+        <input id="loginPass" type="password" placeholder="パスワード" class="input" />
+        <button id="loginBtn" class="btn">ログイン</button>
+        <a class="btn ghost" href="../index.html">トップへ戻る</a>
+      </div>
+
+      <p id="errorMsg" class="error"></p>
+    </section>
+  </main>
+
+<script src="../assets/config.js"></script>
+<script src="../assets/auth.js"></script>
+<script>
+  // EA入口のキー
+  const SERVICE_KEY = "ea";
+
+  document.getElementById("loginBtn").addEventListener("click", function() {
+    const id = document.getElementById("loginId").value.trim();
+    const pass = document.getElementById("loginPass").value.trim();
+    const error = document.getElementById("errorMsg");
+
+    const result = window.Auth.login(SERVICE_KEY, id, pass);
+    if (result.ok) {
+      window.location.href = "./dashboard.html";
+    } else {
+      error.textContent = result.message;
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EA 案内</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1 class="h1">EA：ログイン後のご案内</h1>
+      <p class="muted">ここはEA入口専用の案内ページです。</p>
+
+      <hr class="hr" />
+
+      <h2 class="h2">1. Discordで認証</h2>
+      <p class="muted">
+        Discordサーバーに参加後、認証チャンネルでBotに認証してください。<br />
+        （例）/verify を実行
+      </p>
+
+      <h2 class="h2">2. コンテンツ</h2>
+
+      <div id="lockedArea">
+        <p class="muted">
+          現在、認証確認中です。<br>
+          Discord認証が完了するとコンテンツが表示されます。
+        </p>
+      </div>
+
+      <div id="unlockedArea" style="display:none;">
+  <p class="muted">
+    認証済みです。以下から利用できます。
+  </p>
+  <a class="btn" href="#">Discordへ参加</a>
+</div>
+
+      <h2 class="h2">3. 問い合わせ</h2>
+      <p class="muted">
+        問い合わせ時は、メールアドレス／DiscordユーザーID／利用サービス（ツール）を添えてください。<br />
+        可能ならOS（Windows/Mac）も書いてください。
+      </p>
+
+      <div class="stack" style="margin-top:16px;">
+        <button class="btn" id="logoutBtn">ログアウト</button>
+        <a class="btn ghost" href="../index.html">トップへ戻る</a>
+      </div>
+    </section>
+  </main>
+  <script src="../assets/config.js"></script>
+  <script src="../assets/auth.js"></script>
+  <script>
+    window.Auth.requireLogin("ea", "./login.html");
+
+    const unlocked = window.APP_CONFIG.unlocked.ea;
+
+    if (unlocked) {
+      document.getElementById("lockedArea").style.display = "none";
+      document.getElementById("unlockedArea").style.display = "block";
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", function () {
+      window.Auth.logout("ea");
+      window.location.href = "./login.html";
+    });
+  </script>
+</body>
+</html>

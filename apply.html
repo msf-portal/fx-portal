@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>サービス利用申請フォーム</title>
+  <link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1 class="h1">サービス利用申請フォーム</h1>
+      <p class="muted"></p>
+
+      <div class="stack">
+        <a class="btn" href="#" id="formLink" target="_blank">申請フォームを開く</a>
+        <a class="btn ghost" href="./index.html">トップへ戻る</a>
+      </div>
+
+      <p class="note">
+        申請後、運営側で確認できた方にログイン情報がメールで届きます。
+      </p>
+    </section>
+  </main>
+
+  <script>
+    // TODO: 後でGoogleフォームURLに差し替え
+    const GOOGLE_FORM_URL = "https://forms.gle/gff1qkjv5kdJaVwT9";
+    const a = document.getElementById("formLink");
+    if (GOOGLE_FORM_URL) a.href = GOOGLE_FORM_URL;
+    else a.addEventListener("click", (e) => {
+      e.preventDefault();
+      alert("後でGoogleフォームURLを設定します。");
+    });
+  </script>
+</body>
+</html>
