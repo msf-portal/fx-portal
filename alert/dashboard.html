@@ -10,7 +10,7 @@
   <main class="wrap">
     <section class="card">
       <h1 class="h1">アラート：ログイン後のご案内</h1>
-      <p class="muted">ここはアラート入口専用の案内ページです。</p>
+      <p class="muted">ここはアラート入口専用の認証ページです。</p>
 
       <hr class="hr" />
 
@@ -20,11 +20,11 @@
         （例）/verify を実行
       </p>
 
-      <h2 class="h2">2. コンテンツ</h2>
+      <h2 class="h2">2. Discordサーバー参加</h2>
 
       <div id="lockedArea">
         <p class="muted">
-          Discordサーバーに参加して認証してください。
+          下のボタンからDiscordサーバーに参加してください。
         </p>
 
         <a class="btn" href="https://discord.gg/W7UaJg3r62" target="_blank">
@@ -47,17 +47,11 @@
       </div>
     </section>
   </main>
+
   <script src="../assets/config.js"></script>
   <script src="../assets/auth.js"></script>
   <script>
     window.Auth.requireLogin("alert", "./login.html");
-
-    const unlocked = window.APP_CONFIG.unlocked.alert;
-
-    if (unlocked) {
-      document.getElementById("lockedArea").style.display = "none";
-     document.getElementById("unlockedArea").style.display = "block";
-    }
 
     document.getElementById("logoutBtn").addEventListener("click", function () {
       window.Auth.logout("alert");
